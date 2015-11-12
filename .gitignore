@@ -3,3 +3,4 @@ data/
 *.csv
 *.txt
 DS_store
+*.pyc
