@@ -9,17 +9,16 @@ def find_columns_containing_nan(df, col_names):
         if True in empty[column].unique():
             nan_columns.append(column)
     try:
-        print 'Columns containing NaNas: ', nan_columns
+        print 'Columns containing NaNs: ', nan_columns
         return nan_columns
     except:
         print 'There are no NaNs in this dataframe'
         return None
 
 
-def print_col_datatype_and_unique_values(df, col_names):
+def print_col_datatype(df, col_names):
     for column in col_names:
         print column, ':', df[column].dtype
-        print df[column].unique()
 
 
 def replace_missing_values(df, fill_method):
@@ -37,3 +36,23 @@ def replace_missing_values(df, fill_method):
     elif fill_method == 6:
         df.interpolate(inplace=True)
     return df
+    
+
+def convert_column_to_float(df, column):
+    for idx, row in enumerate(df[column]):
+        try:
+            df.five[idx] = float(row)
+        except:
+            print 'This row cannot be converted'
+    return df
+
+
+def locate_non_numeric_values(df, col_name):
+    non_num_dict = {}
+    for idx, row in df.iterrows():
+        try:
+            float(row['five'])
+        except:
+            non_num_dict[idx] = row['five']
+    print non_num_dict
+    return non_num_dict
